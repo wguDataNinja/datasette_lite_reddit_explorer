@@ -1,0 +1,15 @@
+{
+  "databases": {
+    "wgu_reddit_filtered": {
+      "tables": {
+        "filtered_posts_view": {
+          "plugins": {
+            "datasette-render-html": {
+              "columns": ["permalink_html"]
+            }
+          }
+        }
+      }
+    }
+  }
+}
