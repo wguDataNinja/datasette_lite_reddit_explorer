@@ -1,9 +1,7 @@
-.venv/
-__pycache__/
-*.sqlite
-*.db
+*
+!.gitignore
+!README.md
+!LICENSE
+!metadata.json
+!data/
 !data/wgu_reddit_filtered.db
-.DS_Store
-# ignore sqlite temps
-data/*.db-shm
-data/*.db-wal
