@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.sqlite
+*.db
+!data/wgu_reddit_filtered.db
+.DS_Store
