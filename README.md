@@ -7,6 +7,16 @@ This repository hosts a lightweight SQLite database of WGU-related Reddit posts.
 - Filtered for course codes based on the **2025_06 WGU course catalog**  
 - The database is **updated daily**
 
+
+## Live viewer — 10k most recent posts (unfiltered)
+
+Open the larger sample database in Datasette Lite:  
+[Explore 10k recent posts](https://lite.datasette.io/?url=https://wguDataNinja.github.io/datasette_lite_reddit_explorer/data/WGU-Reddit-10k.db&metadata=https://wguDataNinja.github.io/datasette_lite_reddit_explorer/metadata.json&install=datasette-render-html#/wgu_reddit_10k.db/posts_view)
+
+- Contains the **10,000 most recent posts** across all WGU subreddits  
+- No course-code filtering applied  
+- Same Datasette Lite interface with search and browsing  
+
 ## Live viewer
 Open the database in Datasette Lite:  
 [Explore the data](https://lite.datasette.io/?url=https://wguDataNinja.github.io/datasette_lite_reddit_explorer/data/wgu_reddit_filtered.db&metadata=https://wguDataNinja.github.io/datasette_lite_reddit_explorer/metadata.json&install=datasette-render-html#/wgu_reddit_filtered/filtered_posts_view)
