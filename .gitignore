@@ -5,4 +5,6 @@
 !metadata.json
 !data/
 !data/wgu_reddit_filtered.db
+!data/wgu_reddit_10k.db
+
 !index.html

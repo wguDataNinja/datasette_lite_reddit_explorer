@@ -1,13 +1,10 @@
 {
   "databases": {
-    "wgu_reddit_filtered": {
+    "wgu_reddit_10k.db": {
       "tables": {
-        "filtered_posts_view": {
-          "plugins": {
-            "datasette-render-html": {
-              "columns": ["permalink_html"]
-            }
-          }
+        "posts_view": {
+          "label_column": "title",
+          "source_url": "https://www.reddit.com"
         }
       }
     }
