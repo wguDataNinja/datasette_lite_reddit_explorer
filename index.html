@@ -19,7 +19,7 @@ button{padding:10px 14px;cursor:pointer}
     <input id="q" type="text" placeholder="e.g. transfer credits, mentor, proctored exam" autofocus>
     <button type="submit">Search</button>
   </form>
-  <small>Full-text search powered by SQLite FTS5.</small>
+  <small>Full-text search across title and body.</small>
 </div>
 
 <div class="card">
@@ -27,7 +27,6 @@ button{padding:10px 14px;cursor:pointer}
   <div class="links">
     <a id="lnk-default">Default view (recent posts with search bar)</a>
     <a id="lnk-week">Last 7 days</a>
-    <a id="lnk-connect">Posts mentioning “connect”</a>
   </div>
 </div>
 
@@ -41,5 +40,4 @@ document.getElementById("f").addEventListener("submit",(e)=>{e.preventDefault();
 // links
 document.getElementById("lnk-default").href = ds("#/wgu_reddit_10k/posts?_sort_desc=created_utc");
 document.getElementById("lnk-week").href    = ds("#/wgu_reddit_10k/Last%207%20days");
-document.getElementById("lnk-connect").href = ds("#/wgu_reddit_10k/Search%20by%20keyword?q=connect");
 </script>
