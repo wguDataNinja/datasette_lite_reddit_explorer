@@ -26,7 +26,7 @@
 <div class="card">
   <strong>Jump in</strong>
   <div class="links">
-    <a id="lnk-default">Default view (recent posts with search bar)</a>
+    <a id="lnk-default">Default view (recent posts)</a>
     <a id="lnk-week">Last 7 days</a>
     <a id="lnk-llm">LLM-Friendly view</a>
   </div>
@@ -35,8 +35,12 @@
 <div class="card">
   <strong>Downloads</strong>
   <div class="links">
-    <a id="dl-csv">Posts (CSV, newest first)</a>
-    <a id="dl-json">Posts (JSON, newest first)</a>
+    <a id="dl-default-csv">Recent posts (CSV)</a>
+    <a id="dl-default-json">Recent posts (JSON)</a>
+    <a id="dl-week-csv">Last 7 days (CSV)</a>
+    <a id="dl-week-json">Last 7 days (JSON)</a>
+    <a id="dl-llm-csv">LLM-Friendly (CSV)</a>
+    <a id="dl-llm-json">LLM-Friendly (JSON)</a>
   </div>
 </div>
 
@@ -53,7 +57,7 @@
     return u.toString() + hash;
   }
 
-  // quick search
+  // quick search still goes to keyword search query
   document.getElementById("f").addEventListener("submit", (e) => {
     e.preventDefault();
     const q = document.getElementById("q").value.trim();
@@ -61,12 +65,16 @@
     location.href = ds("#/wgu_reddit_10k/Search%20by%20keyword?q=" + encodeURIComponent(q));
   });
 
-  // links (use canned queries so Default + Last 7 days share the same columns)
-  document.getElementById("lnk-default").href = ds("#/wgu_reddit_10k/Recent%20posts");
-  document.getElementById("lnk-week").href    = ds("#/wgu_reddit_10k/Last%207%20days");
-  document.getElementById("lnk-llm").href     = ds("#/wgu_reddit_10k/LLM-Friendly");
+  // main links
+  document.getElementById("lnk-default").href = ds("#/wgu_reddit_10k/recent_posts");
+  document.getElementById("lnk-week").href    = ds("#/wgu_reddit_10k/last_7_days");
+  document.getElementById("lnk-llm").href     = ds("#/wgu_reddit_10k/llm_friendly");
 
-  // downloads (table exports, newest first)
-  document.getElementById("dl-csv").href  = ds("#/wgu_reddit_10k/posts.csv?_sort_desc=created_utc");
-  document.getElementById("dl-json").href = ds("#/wgu_reddit_10k/posts.json?_sort_desc=created_utc");
+  // downloads
+  document.getElementById("dl-default-csv").href = ds("#/wgu_reddit_10k/recent_posts.csv");
+  document.getElementById("dl-default-json").href = ds("#/wgu_reddit_10k/recent_posts.json");
+  document.getElementById("dl-week-csv").href = ds("#/wgu_reddit_10k/last_7_days.csv");
+  document.getElementById("dl-week-json").href = ds("#/wgu_reddit_10k/last_7_days.json");
+  document.getElementById("dl-llm-csv").href = ds("#/wgu_reddit_10k/llm_friendly.csv");
+  document.getElementById("dl-llm-json").href = ds("#/wgu_reddit_10k/llm_friendly.json");
 </script>
