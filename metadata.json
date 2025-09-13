@@ -3,14 +3,17 @@
     "wgu_reddit_10k": {
       "queries": {
         "Recent posts": {
-          "sql": "select post_id, datetime(created_utc,'unixepoch') as created_at, title, '<a href=\"https://reddit.com' || permalink || '\" target=\"_blank\">link</a>' as permalink_html from posts order by created_utc desc limit 200"
+          "sql": "select post_id, datetime(created_utc,'unixepoch') as created_at, title, substr(selftext,1,240) as selftext_preview, ('<a href=\"https://reddit.com' || permalink || '\" target=\"_blank\" rel=\"noopener\">permalink</a>') as permalink_html, ('https://reddit.com' || permalink) as permalink_url from posts order by created_utc desc limit 200"
         },
         "Search by keyword": {
-          "sql": "select p.post_id, datetime(p.created_utc,'unixepoch') as created_at, p.title, snippet(posts_fts, 1, '', '', ' … ', 20) as selftext_snippet, '<a href=\"https://reddit.com' || p.permalink || '\" target=\"_blank\">link</a>' as permalink_html from posts p join posts_fts f on p.rowid = f.rowid where posts_fts match :q order by p.created_utc desc limit 200",
+          "sql": "select p.post_id, datetime(p.created_utc,'unixepoch') as created_at, p.title, substr(p.selftext,1,240) as selftext_preview, ('<a href=\"https://reddit.com' || p.permalink || '\" target=\"_blank\" rel=\"noopener\">permalink</a>') as permalink_html, ('https://reddit.com' || p.permalink) as permalink_url from posts p join posts_fts f on p.rowid = f.rowid where posts_fts match :q order by p.created_utc desc limit 200",
           "params": ["q"]
         },
         "Last 7 days": {
-          "sql": "select post_id, datetime(created_utc,'unixepoch') as created_at, title, '<a href=\"https://reddit.com' || permalink || '\" target=\"_blank\">link</a>' as permalink_html from posts where created_utc >= strftime('%s','now','-7 days') order by created_utc desc"
+          "sql": "select post_id, datetime(created_utc,'unixepoch') as created_at, title, substr(selftext,1,240) as selftext_preview, ('<a href=\"https://reddit.com' || permalink || '\" target=\"_blank\" rel=\"noopener\">permalink</a>') as permalink_html, ('https://reddit.com' || permalink) as permalink_url from posts where created_utc >= strftime('%s','now','-7 days') order by created_utc desc limit 200"
+        },
+        "LLM-Friendly": {
+          "sql": "select post_id, title, substr(selftext,1,800) as selftext_preview from posts order by created_utc desc limit 200"
         }
       }
     }
