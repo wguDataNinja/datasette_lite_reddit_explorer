@@ -1,11 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=https://lite.datasette.io/?url=https://wguDataNinja.github.io/datasette_lite_reddit_explorer/data/wgu_reddit_filtered.db&metadata=https://wguDataNinja.github.io/datasette_lite_reddit_explorer/metadata.json&install=datasette-render-html#/wgu_reddit_filtered/filtered_posts_view">
-  <title>Redirecting...</title>
-</head>
-<body>
-  <p>Redirecting to <a href="https://lite.datasette.io/?url=https://wguDataNinja.github.io/datasette_lite_reddit_explorer/data/wgu_reddit_filtered.db&metadata=https://wguDataNinja.github.io/datasette_lite_reddit_explorer/metadata.json&install=datasette-render-html#/wgu_reddit_filtered/filtered_posts_view">Datasette Explorer</a>.</p>
-</body>
-</html>
+<!doctype html>
+<meta charset="utf-8">
+<title>WGU Reddit Explorer</title>
+<style>
+body{font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:840px;margin:40px auto;padding:0 16px}
+h1{margin:0 0 8px}
+.card{padding:16px;border:1px solid #e5e5e5;border-radius:10px;margin:12px 0}
+form{display:flex;gap:8px;margin-top:8px}
+input[type=text]{flex:1;padding:10px}
+button{padding:10px 14px;cursor:pointer}
+.links a{display:block;margin:6px 0}
+</style>
+<h1>WGU Reddit Explorer — 10k recent</h1>
+<p>Search titles and bodies. Most recent about 10,000 posts.</p>
+
+<div class="card">
+  <strong>Quick search</strong>
+  <form id="f">
+    <input id="q" type="text" placeholder="e.g. transfer credits, mentor, proctored exam" autofocus>
+    <button type="submit">Search</button>
+  </form>
+  <small>Full-text search powered by SQLite FTS5.</small>
+</div>
+
+<div class="card">
+  <strong>Jump in</strong>
+  <div class="links">
+    <a id="lnk-recent">Recent posts</a>
+    <a id="lnk-week">Last 7 days</a>
+    <a id="lnk-connect">Posts mentioning connect</a>
+  </div>
+</div>
+
+<script>
+const base = "https://lite.datasette.io/";
+const db = "https://wguDataNinja.github.io/datasette_lite_reddit_explorer/data/wgu_reddit_10k.db";
+const meta = "https://wguDataNinja.github.io/datasette_lite_reddit_explorer/metadata.json";
+function ds(hash){const u=new URL(base);u.searchParams.set("url",db);u.searchParams.set("metadata",meta);u.searchParams.set("install","datasette-render-html");return u.toString()+hash;}
+document.getElementById("f").addEventListener("submit",(e)=>{e.preventDefault();const q=document.getElementById("q").value.trim();if(!q)return;location.href=ds("#/wgu_reddit_10k/Search%20by%20keyword?q="+encodeURIComponent(q));});
+document.getElementById("lnk-recent").href  = ds("#/wgu_reddit_10k/Recent%20posts");
+document.getElementById("lnk-week").href    = ds("#/wgu_reddit_10k/Last%207%20days");
+document.getElementById("lnk-connect").href = ds("#/wgu_reddit_10k/Search%20by%20keyword?q=connect");
+</script>

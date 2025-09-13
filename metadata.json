@@ -1,10 +1,16 @@
 {
   "databases": {
-    "wgu_reddit_10k.db": {
-      "tables": {
-        "posts_view": {
-          "label_column": "title",
-          "source_url": "https://www.reddit.com"
+    "wgu_reddit_10k": {
+      "queries": {
+        "Recent posts": {
+          "sql": "select post_id, created_at, title, permalink_html from posts order by created_at desc limit 200"
+        },
+        "Search by keyword": {
+          "sql": "select p.post_id, p.created_at, p.title, p.permalink_html from posts p join posts_fts f on p.rowid = f.rowid where posts_fts match :q order by p.created_at desc limit 200",
+          "params": ["q"]
+        },
+        "Last 7 days": {
+          "sql": "select post_id, created_at, title, permalink_html from posts where created_at >= datetime('now','-7 days') order by created_at desc"
         }
       }
     }
