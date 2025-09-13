@@ -10,11 +10,12 @@ This repository hosts a lightweight SQLite database of WGU-related Reddit posts.
 
 ## Live viewer — 10k most recent posts (unfiltered)
 
-Open the larger sample database in Datasette Lite:  
-[Explore 10k recent posts](https://lite.datasette.io/?url=https://wguDataNinja.github.io/datasette_lite_reddit_explorer/data/wgu_reddit_10k.db&metadata=https://wguDataNinja.github.io/datasette_lite_reddit_explorer/metadata.json&install=datasette-render-html#/wgu_reddit_10k/posts_view)
-- Contains the **10,000 most recent posts** across all WGU subreddits  
-- No course-code filtering applied  
-- Same Datasette Lite interface with search and browsing  
+👉 [Open the WGU Reddit Explorer landing page](https://wguDataNinja.github.io/datasette_lite_reddit_explorer/)
+
+This page lets you:
+- Run keyword searches across 10k recent posts (titles + bodies)
+- Jump into canned queries (recent posts, last 7 days, example searches)
+- Explore the full Datasette Lite views if you prefer 
 
 ## Live viewer
 Open the database in Datasette Lite:  
